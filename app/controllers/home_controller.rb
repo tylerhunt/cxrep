@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    redirect_to current_user.sites.first and return if current_user
+    redirect_to sites_path and return if current_user
 
     render inertia: {}
   end
