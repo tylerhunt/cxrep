@@ -1,2 +1,2 @@
 web: bin/rails server -p ${PORT:-3000}
-vite: VITE_RUBY_PORT=${PORT:-3036} bin/vite dev
+vite: VITE_RUBY_PORT=${PORT:-3036} bundle exec vite dev
