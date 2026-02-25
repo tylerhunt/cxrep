@@ -1,0 +1,364 @@
+plugins:
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+#
+# Layout
+#
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/LineLength:
+  Enabled: true
+  Max: 79
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceAroundOperators:
+  EnforcedStyleForExponentOperator: space
+
+#
+# Lint
+#
+
+Lint/AmbiguousBlockAssociation:
+  AllowedMethods:
+    - 'and_wrap_original'
+    - 'change'
+    - 'change_with_retry'
+
+Lint/UnusedMethodArgument:
+  AllowUnusedKeywordArguments: true
+
+Lint/UselessAccessModifier:
+  MethodCreatingMethods:
+    - 'delegate'
+
+#
+# Metrics
+#
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+  Exclude:
+    - 'app/controllers/**/*.rb'
+    - 'app/operations/servicing/create_origination_file.rb'
+    - 'app/ports/banking/adapters/astra.rb'
+    - 'db/migrate/*.rb'
+    - 'db/seeds/seeders/firm.rb'
+  Max: 125
+
+Metrics/CyclomaticComplexity:
+  AllowedMethods: props
+
+Metrics/MethodLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+  Max: 25
+  Exclude:
+    - 'db/migrate/**/*.rb'
+    - 'db/seeds/seeders/firm.rb'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'lib/lawfi/astra/types.rb'
+    - 'lib/lawfi/launch_servicing/events/loan_row.rb'
+    - 'lib/lawfi/launch_servicing/types.rb'
+    - 'lib/lawfi/payload/types.rb'
+    - 'spec/**/*_spec.rb'
+
+Metrics/ParameterLists:
+  Enabled: false
+
+#
+# Naming
+#
+
+Naming/MethodName:
+  AllowedPatterns:
+    - 'DELETE'
+    - 'GET'
+    - 'POST'
+    - 'PUT'
+
+Naming/PredicateMethod:
+  AllowBangMethods: true
+
+Naming/PredicatePrefix:
+  ForbiddenPrefixes:
+    - is_
+    - have_
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: 'error'
+
+Naming/VariableNumber:
+  CheckSymbols: false
+  EnforcedStyle: snake_case
+
+#
+# Style
+#
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  AllowedPatterns:
+    - 'any?'
+    - 'bind'
+    - 'detect'
+  Exclude:
+    - 'spec/factories/**/*.rb'
+
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    find: detect
+    map!: collect!
+    map: collect
+    reduce: inject
+
+Style/DataInheritance:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ExplicitBlockArgument:
+  Enabled: false
+
+Style/FormatStringToken:
+  Exclude:
+    - 'config/routes.rb'
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/GuardClause:
+  AllowConsecutiveConditionals: true
+
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: always
+  Exclude:
+    - 'lib/tasks/**/*.rake'
+
+Style/Lambda:
+  EnforcedStyle: 'literal'
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+# this is often a useful way to break up long lines
+Style/MultilineTernaryOperator:
+  Enabled: false
+
+# allow the primary branch to be a negated condition
+Style/NegatedIfElseCondition:
+  Enabled: false
+
+Style/NestedParenthesizedCalls:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/SuperWithArgsParentheses:
+  Enabled: false
+
+Style/SymbolProc:
+  Exclude:
+    - 'app/serializers/**/*.rb'
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+
+Style/UnlessElse:
+  Enabled: false
+
+#
+# Rails
+#
+
+Rails/ActionControllerFlashBeforeRender:
+  Enabled: false
+
+Rails/ActionOrder:
+ ExpectedOrder:
+   - index
+   - show
+   - new
+   - create
+   - edit
+   - update
+   - destroy
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/Date:
+  Exclude:
+    - 'spec/lawfi/**/*_spec.rb'
+
+Rails/DeprecatedActiveModelErrorsMethods:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds/logger.rb'
+
+Rails/RakeEnvironment:
+  Enabled: false
+
+Rails/RenderInline:
+  Exclude:
+    - 'spec/controllers/**/*_spec.rb'
+
+Rails/SkipsModelValidations:
+  AllowedMethods: [update_all]
+
+Rails/TimeZone:
+  Exclude:
+    - 'spec/lawfi/**/*_spec.rb'
+
+Rails/UnknownEnv:
+  Environments:
+    - demo
+    - development
+    - production
+    - staging
+    - test
+
+#
+# Rake
+#
+
+Rake/Desc:
+  Exclude:
+    - 'lib/tasks/db.rake'
+
+Rake/MethodDefinitionInTask:
+  Exclude:
+    - 'lib/tasks/factory_bot.rake' # until rubocop/rubocop-rake#44 is released
+
+#
+# RSpec
+#
+
+RSpec:
+  Language:
+    Includes:
+      Examples:
+        - they
+
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/support/shared/stub_mail_rendering.rb'
+
+RSpec/DescribedClass:
+  SkipBlocks: true
+
+RSpec/EmptyMetadata:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LeadingSubject:
+  Enabled: false
+
+RSpec/IncludeExamples:
+  Enabled: false
+
+RSpec/LetSetup:
+  Exclude:
+    - spec/operations/launch_servicing/event_handlers/loan_row_spec.rb
+    - spec/operations/launch_servicing/event_handlers/transaction_row_spec.rb
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/integration/**/*_spec.rb'
+    - 'spec/lawfi/prove/client_spec.rb'
+    - 'spec/system/**/*_spec.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  AllowedGroups: [describe]
+  Max: 2
+
+RSpec/NoExpectationExample:
+  Exclude:
+    - 'spec/integration/firm_onboarding_spec.rb'
+    - 'spec/lawfi/prove/client_spec.rb'
+
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+RSpec/ScatteredLet:
+  Enabled: false
+
+RSpec/ScatteredSetup:
+  Enabled: false
+
+RSpec/VerifiedDoubleReference:
+  # EnforcedStyle: string
+  Enabled: false # until `EnforcedStyle` option is hopefully restored
+
+RSpec/VerifiedDoubles:
+    IgnoreSymbolicNames: true
