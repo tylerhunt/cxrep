@@ -5,5 +5,6 @@ class ApplicationOperation < CXRep::Operation
     # models
     Site = Instance(Site)
     Report = Instance(Report)
+    User = Instance(User)
   end
 end

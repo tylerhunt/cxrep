@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm, Head, Link } from '@inertiajs/react';
 
 import {
@@ -14,7 +13,7 @@ import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-export default function Show({ site, reportsPath }) {
+export default function Show({ site, sitesPath, reportsPath }) {
   const { data, errors, setData, setErrors, processing } = useForm({
     content: '',
   });
@@ -30,6 +29,14 @@ export default function Show({ site, reportsPath }) {
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
               <Link href="/">Home</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={sitesPath}>Sites</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
 

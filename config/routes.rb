@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sites, only: :show do
+  resources :sites, only: %i[index show new create] do
     resources :reports, only: %i[create show edit update]
   end
 

@@ -13,16 +13,17 @@ import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-export default function Edit({ site, sitePath, report, reportPath }) {
+function New({ sitesPath }) {
   const { data, errors, setData, setErrors, processing } = useForm({
-    content: report.content,
+    name: '',
+    url: 'https://',
   });
 
   const handleChange = ({ target: { name, value } }) => setData(name, value);
 
   return (
     <>
-      <Head title={site.name} />
+      <Head title="New Site" />
 
       <Breadcrumb>
         <BreadcrumbList>
@@ -35,35 +36,49 @@ export default function Edit({ site, sitePath, report, reportPath }) {
           <BreadcrumbSeparator />
 
           <BreadcrumbItem>
-            <Link href={sitePath}>{site.name}</Link>
+            <BreadcrumbLink asChild>
+              <Link href={sitesPath}>Sites</Link>
+            </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbSeparator />
 
           <BreadcrumbItem>
-            <BreadcrumbPage>{report.id}</BreadcrumbPage>
+            <BreadcrumbPage>New</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
-      <Form action={reportPath} method="patch" onError={setErrors}>
+      <Form action={sitesPath} onError={setErrors}>
         <FieldGroup>
-          <Field data-invalid={errors.content && true}>
-            <FieldLabel htmlFor="content">Content</FieldLabel>
+          <Field data-invalid={errors.name && true}>
+            <FieldLabel htmlFor="name">Name</FieldLabel>
             <Input
-              id="content"
-              name="content"
+              id="name"
+              name="name"
               onChange={handleChange}
-              value={data.content}
+              value={data.name}
             />
-            <p>{errors.content}</p>
+            <p>{errors.name}</p>
+          </Field>
+
+          <Field data-invalid={errors.url && true}>
+            <FieldLabel htmlFor="url">URL</FieldLabel>
+            <Input
+              id="url"
+              name="url"
+              onChange={handleChange}
+              type="url"
+              value={data.url}
+            />
+            <p>{errors.url}</p>
           </Field>
         </FieldGroup>
 
         <FieldGroup>
           <Field>
             <Button disabled={processing} type="submit">
-              Save
+              Create Site
             </Button>
           </Field>
         </FieldGroup>
@@ -71,3 +86,5 @@ export default function Edit({ site, sitePath, report, reportPath }) {
     </>
   );
 }
+
+export default New;
