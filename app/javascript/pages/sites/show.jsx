@@ -3,14 +3,12 @@ import { useForm, Head, Link } from '@inertiajs/react';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Form } from '@/components/ui/form';
+import { H1 } from '@/components/ui/typography';
 import { Input } from '@/components/ui/input';
 
 export default function Show({ site, sitesPath, reportsPath }) {
@@ -27,26 +25,12 @@ export default function Show({ site, sitesPath, reportsPath }) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href={sitesPath}>Sites</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbPage>{site.name}</BreadcrumbPage>
+            <Link href={sitesPath}>Sites</Link>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+
+      <H1>{site.name}</H1>
 
       <Form action={reportsPath} onError={setErrors}>
         <FieldGroup>

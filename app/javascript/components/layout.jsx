@@ -18,7 +18,7 @@ export default function Layout({ children }) {
   const { currentUser, newSessionPath, sessionPath } = usePage().props;
 
   return (
-    <main className="flex flex-col justify-center gap-6 p-6 md:p-10">
+    <main className="flex flex-col justify-center gap-6 sm:max-w-xl mx-auto p-6 md:p-10">
       <header className="flex w-full gap-6">
         <nav className="mx-auto max-w-7xl w-full">
           <div className="relative flex h-16 items-center justify-between">
@@ -32,7 +32,7 @@ export default function Layout({ children }) {
               {currentUser ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button>
+                    <Button size="icon">
                       <span className="sr-only">Open user menu</span>
                       <UserIcon className="size-6" />
                     </Button>

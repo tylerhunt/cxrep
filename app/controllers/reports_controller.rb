@@ -7,7 +7,10 @@ class ReportsController < ApplicationController
   def show
     report = site.reports.find(params[:id])
 
-    render inertia: { report: { content: report.content.to_s } }
+    render inertia: {
+      report: { content: report.content.to_s },
+      editReportPath: edit_site_report_path(site, report),
+    }
   end
 
   def create

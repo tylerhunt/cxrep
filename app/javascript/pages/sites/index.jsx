@@ -1,22 +1,16 @@
 import { Head, Link } from '@inertiajs/react';
+import { BookIcon, BookPlusIcon } from 'lucide-react';
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from '@/components/ui/item';
+import { H1 } from '@/components/ui/typography';
 
 export default function Index({ sites, newSitePath }) {
   return (
@@ -24,43 +18,35 @@ export default function Index({ sites, newSitePath }) {
       <Head title="Sites" />
 
       <div className="flex items-center mb-4">
-        <Breadcrumb className="flex-1">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/">Home</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbSeparator />
-
-            <BreadcrumbItem>
-              <BreadcrumbPage>Sites</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <H1 className="flex-1">Sites</H1>
 
         <Button asChild>
-          <Link href={newSitePath}>New Site</Link>
+          <Link href={newSitePath}>
+            <BookPlusIcon />
+            Add Site
+          </Link>
         </Button>
       </div>
 
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>URL</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {sites.map((site) => (
-            <TableRow key={site.id}>
-              <TableCell>{site.name}</TableCell>
-              <TableCell className="font-mono">{site.url}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <ItemGroup className="gap-4">
+        {sites.map((site) => (
+          <Item key={site.id} variant="outline" asChild role="listitem">
+            <Link href="#">
+              <ItemMedia>
+                <BookIcon />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle className="line-clamp-1 text-lg">
+                  {site.name}
+                </ItemTitle>
+                <ItemDescription className="font-mono text-xs">
+                  {site.url}
+                </ItemDescription>
+              </ItemContent>
+            </Link>
+          </Item>
+        ))}
+      </ItemGroup>
     </>
   );
 }

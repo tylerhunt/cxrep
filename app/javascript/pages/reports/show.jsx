@@ -1,15 +1,15 @@
 import { Head, Link } from '@inertiajs/react';
+import { PencilIcon } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { H1 } from '@/components/ui/typography';
 
-export default function Show({ site, sitePath, report }) {
+export default function Show({ editReportPath, site, sitePath, report }) {
   return (
     <>
       <Head title={`${site.name} Reports`} />
@@ -17,24 +17,21 @@ export default function Show({ site, sitePath, report }) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
             <Link href={sitePath}>{site.name}</Link>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbPage>Reports</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+
+      <div className="flex items-center mb-4">
+        <H1 className="flex-1">Report</H1>
+
+        <Button asChild>
+          <Link href={editReportPath}>
+            <PencilIcon />
+            Edit Report
+          </Link>
+        </Button>
+      </div>
 
       <div className="my-7">{report.content}</div>
     </>

@@ -3,14 +3,12 @@ import { useForm, Head, Link } from '@inertiajs/react';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Form } from '@/components/ui/form';
+import { H1 } from '@/components/ui/typography';
 import { Input } from '@/components/ui/input';
 
 export default function Edit({ site, sitePath, report, reportPath }) {
@@ -27,24 +25,12 @@ export default function Edit({ site, sitePath, report, reportPath }) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
             <Link href={sitePath}>{site.name}</Link>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbPage>{report.id}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+
+      <H1>Edit Report</H1>
 
       <Form action={reportPath} method="patch" onError={setErrors}>
         <FieldGroup>
@@ -61,9 +47,14 @@ export default function Edit({ site, sitePath, report, reportPath }) {
         </FieldGroup>
 
         <FieldGroup>
-          <Field>
+          <Field orientation="horizontal">
             <Button disabled={processing} type="submit">
-              Save
+              Update Report
+            </Button>
+            <Button asChild type="submit" variant="link">
+              <Link href={reportPath}>
+                Cancel
+              </Link>
             </Button>
           </Field>
         </FieldGroup>
