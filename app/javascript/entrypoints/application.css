@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/plus-jakarta-sans";
 
+@source "../**/*.{jsx,tsx,js,ts}";
+
 @custom-variant dark (&:is(.dark *));
 
 @plugin "@tailwindcss/typography";
