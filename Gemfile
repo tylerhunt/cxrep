@@ -14,6 +14,7 @@ gem 'puma', '>= 5.0'
 
 # engines/plugins
 gem 'inertia_rails', '~> 3.17'
+gem 'js-routes', '~> 2.3'
 gem 'propshaft'
 gem 'solid_cache'
 gem 'solid_queue'

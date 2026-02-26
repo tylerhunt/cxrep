@@ -4,3 +4,6 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+desc 'update js-routes file before JavaScript build'
+task 'assets:precompile' => 'js:routes'

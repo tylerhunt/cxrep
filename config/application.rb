@@ -14,6 +14,7 @@ require 'action_text/engine'
 
 # engines/plugins
 require 'inertia_rails'
+require 'js_routes'
 require 'propshaft'
 require 'solid_cache'
 require 'solid_queue'
