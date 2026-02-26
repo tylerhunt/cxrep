@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   before_action :require_no_user, except: :destroy
 
   def new
-    render inertia: { sessionPath: session_path }
+    render inertia: {}
   end
 
   def create

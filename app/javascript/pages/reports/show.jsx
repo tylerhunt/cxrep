@@ -1,3 +1,5 @@
+import { editSiteReportPath, sitePath } from '@/routes';
+
 import { Head, Link } from '@inertiajs/react';
 import { PencilIcon } from 'lucide-react';
 
@@ -9,7 +11,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { H1 } from '@/components/ui/typography';
 
-export default function Show({ editReportPath, site, sitePath, report }) {
+export default function Show({ site, report }) {
   return (
     <>
       <Head title={`${site.name} Reports`} />
@@ -17,7 +19,7 @@ export default function Show({ editReportPath, site, sitePath, report }) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <Link href={sitePath}>{site.name}</Link>
+            <Link href={sitePath(site.id)}>{site.name}</Link>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -26,7 +28,7 @@ export default function Show({ editReportPath, site, sitePath, report }) {
         <H1 className="flex-1">Report</H1>
 
         <Button asChild>
-          <Link href={editReportPath}>
+          <Link href={editSiteReportPath(site.id, report.id)}>
             <PencilIcon />
             Edit Report
           </Link>

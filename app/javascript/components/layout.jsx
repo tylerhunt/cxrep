@@ -1,5 +1,6 @@
 import { LogOutIcon as SignOutIcon, UserIcon } from 'lucide-react';
 import { usePage, Link } from '@inertiajs/react';
+import { newSessionPath, sessionPath } from '@/routes';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +16,7 @@ import {
 import { Logo } from '@/components/logo';
 
 export default function Layout({ children }) {
-  const { currentUser, newSessionPath, sessionPath } = usePage().props;
+  const { currentUser } = usePage().props;
 
   return (
     <main className="flex flex-col justify-center gap-6 sm:max-w-xl mx-auto p-6 md:p-10">
@@ -49,7 +50,7 @@ export default function Layout({ children }) {
                       <DropdownMenuItem asChild variant="destructive">
                         <Link
                           className="w-full"
-                          href={sessionPath}
+                          href={sessionPath()}
                           method="delete"
                         >
                           <SignOutIcon />
@@ -60,9 +61,11 @@ export default function Layout({ children }) {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link href={newSessionPath} as="button">
-                  Sign In
-                </Link>
+                <Button asChild>
+                  <Link href={newSessionPath()} as="button">
+                    Sign In
+                  </Link>
+                </Button>
               )}
             </div>
           </div>

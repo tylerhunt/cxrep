@@ -1,15 +1,13 @@
 class ReportsController < ApplicationController
   before_action :require_user
 
-  inertia_share site: -> { site.as_json(only: :name) }
-  inertia_share sitePath: -> { site_path(site) }
+  inertia_share site: -> { site.as_json(only: %i[id name]) }
 
   def show
     report = site.reports.find(params[:id])
 
     render inertia: {
-      report: { content: report.content.to_s },
-      editReportPath: edit_site_report_path(site, report),
+      report: report.as_json(only: :id).merge(content: report.content.to_s),
     }
   end
 
@@ -26,8 +24,7 @@ class ReportsController < ApplicationController
     report = site.reports.find(params[:id])
 
     render inertia: {
-      report: report.as_json(only: :content),
-      reportPath: site_report_path(site, report),
+      report: report.as_json(only: %i[id content]),
     }
   end
 

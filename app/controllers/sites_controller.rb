@@ -6,22 +6,17 @@ class SitesController < ApplicationController
 
     render inertia: {
       sites: sites.as_json(only: %i[id name url]),
-      newSitePath: new_site_path,
     }
   end
 
   def show
     site = Current.user.sites.find(params[:id])
 
-    render inertia: {
-      site: site.as_json(only: :name),
-      sitesPath: sites_path,
-      reportsPath: site_reports_path(site),
-    }
+    render inertia: { site: site.as_json(only: %i[id name]) }
   end
 
   def new
-    render inertia: { sitesPath: sites_path }
+    render inertia: {}
   end
 
   def create

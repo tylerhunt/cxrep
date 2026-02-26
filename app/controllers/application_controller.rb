@@ -8,7 +8,5 @@ class ApplicationController < ActionController::Base
   # maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  inertia_share newSessionPath: -> { new_session_path }
-  inertia_share sessionPath: -> { session_path }
   inertia_share currentUser: -> { current_user&.as_json(only: :email) }
 end

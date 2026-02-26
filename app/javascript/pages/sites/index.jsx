@@ -1,3 +1,5 @@
+import { newSitePath, sitePath } from '@/routes';
+
 import { Head, Link } from '@inertiajs/react';
 import { BookIcon, BookPlusIcon } from 'lucide-react';
 
@@ -12,7 +14,7 @@ import {
 } from '@/components/ui/item';
 import { H1 } from '@/components/ui/typography';
 
-export default function Index({ sites, newSitePath }) {
+export default function Index({ sites }) {
   return (
     <>
       <Head title="Sites" />
@@ -21,7 +23,7 @@ export default function Index({ sites, newSitePath }) {
         <H1 className="flex-1">Sites</H1>
 
         <Button asChild>
-          <Link href={newSitePath}>
+          <Link href={newSitePath()}>
             <BookPlusIcon />
             Add Site
           </Link>
@@ -31,7 +33,7 @@ export default function Index({ sites, newSitePath }) {
       <ItemGroup className="gap-4">
         {sites.map((site) => (
           <Item key={site.id} variant="outline" asChild role="listitem">
-            <Link href="#">
+            <Link href={sitePath(site.id)}>
               <ItemMedia>
                 <BookIcon />
               </ItemMedia>

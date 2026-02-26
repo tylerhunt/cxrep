@@ -1,4 +1,5 @@
 import { useForm, Head, Link } from '@inertiajs/react';
+import { sitesPath } from '@/routes';
 
 import { Button } from '@/components/ui/button';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
@@ -6,7 +7,7 @@ import { Form } from '@/components/ui/form';
 import { H1 } from '@/components/ui/typography';
 import { Input } from '@/components/ui/input';
 
-function New({ sitesPath }) {
+function New() {
   const { data, errors, setData, setErrors, processing } = useForm({
     name: '',
     url: 'https://',
@@ -20,7 +21,7 @@ function New({ sitesPath }) {
 
       <H1>New Site</H1>
 
-      <Form action={sitesPath} onError={setErrors}>
+      <Form action={sitesPath()} onError={setErrors}>
         <FieldGroup>
           <Field data-invalid={errors.name && true}>
             <FieldLabel htmlFor="name">Name</FieldLabel>
@@ -52,9 +53,7 @@ function New({ sitesPath }) {
               Create Site
             </Button>
             <Button asChild type="submit" variant="link">
-              <Link href={sitesPath}>
-                Cancel
-              </Link>
+              <Link href={sitesPath()}>Cancel</Link>
             </Button>
           </Field>
         </FieldGroup>
