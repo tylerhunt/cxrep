@@ -21,7 +21,7 @@ gem 'solid_queue'
 gem 'vite_rails', '~> 3.0'
 
 group :development do
-  gem 'rubocop', '~> 1.84', require: false
+  gem 'rubocop', '~> 1.85', require: false
   gem 'rubocop-rails', '~> 2.34', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-rspec', '~> 3.9', require: false
