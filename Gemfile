@@ -18,7 +18,7 @@ gem 'js-routes', '~> 2.3'
 gem 'propshaft'
 gem 'solid_cache'
 gem 'solid_queue'
-gem 'vite_rails', '~> 3.0'
+gem 'vite_rails', '~> 3.10'
 
 group :development do
   gem 'rubocop', '~> 1.84', require: false
