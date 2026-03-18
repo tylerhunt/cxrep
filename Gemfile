@@ -13,7 +13,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 
 # engines/plugins
-gem 'inertia_rails', '~> 3.17'
+gem 'inertia_rails', '~> 3.18'
 gem 'js-routes', '~> 2.3'
 gem 'propshaft'
 gem 'solid_cache'
